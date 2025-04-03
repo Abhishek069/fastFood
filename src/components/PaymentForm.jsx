@@ -60,7 +60,7 @@ const PaymentForm = () => {
 
     setLoading(true);
     setError(null);
-
+    console.log(cart)
     try {
       const response = await fetch(
         "http://localhost:8080/create-payment-intent",

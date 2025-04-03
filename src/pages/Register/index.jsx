@@ -30,7 +30,7 @@ const Register = () => {
       }),
     })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           setLoading(false);
           toast.success("Account created successfully!🎉", {
             position: "top-right",
