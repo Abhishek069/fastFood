@@ -79,5 +79,46 @@ router.get('/get-order-basedDate', async (req, res) => {
     }
 });
 
+// router.get('/get-order-basedDate', async (req, res) => {
+//     try {
+//         const { startDate, endDate } = req.query;
+
+//         const filter = {};
+//         if (startDate && endDate) {
+//             filter.createdAt = {
+//                 $gte: new Date(startDate),
+//                 $lte: new Date(endDate)
+//             };
+//         }
+
+//         console.log("Applied Date Filter:", JSON.stringify(filter, null, 2));
+
+//         const aggregatePipeline = [
+//             { $match: filter },
+//             { $unwind: "$orderItems" }, 
+//             {
+//                 $group: {
+//                     _id: "$orderItems.category", 
+//                     products: { $push: "$$ROOT" }
+//                 }
+//             },
+//             {
+//                 $project: {
+//                     name: "$_id",
+//                     products: 1,
+//                     _id: 0
+//                 }
+//             }
+//         ];
+
+//         const orders = await Order.aggregate(aggregatePipeline);
+//         console.log("Orders found:", orders.length);
+
+//         res.status(200).send({ data: orders });
+//     } catch (err) {
+//         res.status(400).send({ error: err.message });
+//     }
+// });
+
 
 module.exports = router
